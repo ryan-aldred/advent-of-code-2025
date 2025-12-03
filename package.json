@@ -6,6 +6,7 @@
   "scripts": {
     "1a": "tsx ./day/1/a.ts",
     "1b": "tsx ./day/1/b.ts",
+    "2a": "tsx ./day/2/a.ts",
     "test": "vitest"
   },
   "keywords": [],
