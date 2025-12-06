@@ -8,8 +8,7 @@
     "1b": "tsx ./day/1/b.ts",
     "2a": "tsx ./day/2/a.ts",
     "2b": "tsx ./day/2/b.ts",
-    "3a": "tsx ./day/3/a.ts",
-    "3b": "tsx ./day/3/b.ts",
+    "3": "tsx ./day/3/app.ts",
     "test": "vitest"
   },
   "keywords": [],
