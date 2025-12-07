@@ -61,4 +61,61 @@ export function getAdjacentCoords(
 
 const data = extractArrayFromTxtFile("day/4", "input.txt");
 
-console.log(optimizeForklifts(data));
+// console.log(optimizeForklifts(data));
+
+export function optimizedForklifePath(data: string[] | undefined) {
+  if (!data) throw new Error("no input");
+  let input = data.map((line) => line.split(""));
+  const yBoundary = input.length - 1;
+  let movableRolls = 0;
+  let rollsMovedThisLoop = 0;
+  let keepIterating = true;
+
+  while (keepIterating) {
+    input.forEach((val) => console.log(val));
+    let movableRollCoords: [number, number][] = [];
+
+    for (let i = 0; i < input.length; i++) {
+      const line = input[i];
+      const xBoundary = line.length - 1;
+
+      for (let j = 0; j < line.length; j++) {
+        const currentValue = input[i][j];
+
+        if (currentValue === "@") {
+          let adjacentRolls = 0;
+          const adjacentCoords = getAdjacentCoords(
+            [i, j],
+            yBoundary,
+            xBoundary
+          );
+
+          adjacentCoords.forEach(([coorY, coorX]) => {
+            if (input[coorY][coorX] === "@") {
+              adjacentRolls++;
+            }
+          });
+
+          if (adjacentRolls < 4) {
+            movableRolls++;
+            rollsMovedThisLoop += adjacentRolls;
+            movableRollCoords.push([i, j]);
+          }
+        }
+      }
+    }
+
+    movableRollCoords.forEach(([currY, currX]) => {
+      input[currY][currX] = ".";
+    });
+
+    if (rollsMovedThisLoop > 0) {
+      rollsMovedThisLoop = 0;
+    } else {
+      keepIterating = false;
+    }
+  }
+  return movableRolls;
+}
+
+console.log(optimizedForklifePath(data));

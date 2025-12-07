@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { extractArrayFromTxtFile } from "../../utils/fileReader";
-import { getAdjacentCoords, optimizeForklifts } from "./app";
+import {
+  getAdjacentCoords,
+  optimizedForklifePath,
+  optimizeForklifts,
+} from "./app";
 
 describe("day 4", () => {
   describe("getAdjacentCoords", () => {
@@ -166,11 +170,19 @@ describe("day 4", () => {
     });
   });
 
-  describe("optimizeForklifts", () => {
-    it.only("returns 13 for testInputA.txt", () => {
+  describe("optimizeForklifts A", () => {
+    it("returns 13 for testInputA.txt", () => {
       const data = extractArrayFromTxtFile("day/4", "testInputA.txt");
 
       expect(optimizeForklifts(data)).toBe(13);
+    });
+  });
+
+  describe("optimizeForklifts B", () => {
+    it("returns 43 for testInputA.txt", () => {
+      const data = extractArrayFromTxtFile("day/4", "testInputA.txt");
+
+      expect(optimizedForklifePath(data)).toBe(43);
     });
   });
 });
