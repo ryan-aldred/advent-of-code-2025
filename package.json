@@ -10,6 +10,7 @@
     "2b": "tsx ./day/2/b.ts",
     "3": "tsx ./day/3/app.ts",
     "4": "tsx ./day/4/app.ts",
+    "5": "tsx ./day/5/app.ts",
     "test": "vitest"
   },
   "keywords": [],
